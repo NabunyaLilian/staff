@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">staff</string>
+    <string name="app_name">Staff</string>
     <string name="name">name</string>
+    <string name="email">email</string>
 </resources>
