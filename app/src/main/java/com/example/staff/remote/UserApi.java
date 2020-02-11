@@ -1,4 +1,7 @@
-package com.example.staff;
+package com.example.staff.remote;
+
+import com.example.staff.model.User;
+import com.example.staff.model.UserList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,6 +1,5 @@
-package com.example.staff;
+package com.example.staff.ui.home;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.staff.R;
+import com.example.staff.model.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,9 +19,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
     List<User> userArray;
+    private ListClickListener listClickListener;
 
-    public ListViewAdapter(List<User> userArray) {
+    public ListViewAdapter(List<User> userArray, ListClickListener listClickListener) {
         this.userArray = userArray;
+        this.listClickListener = listClickListener;
     }
 
     @NonNull
@@ -44,12 +47,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                intent.putExtra("profile_pic", user.getProfile_photo());
-                intent.putExtra("first_names", user.getF_name());
-                intent.putExtra("last_names", user.getL_name());
-                intent.putExtra("emails", user.getEmail());
-                view.getContext().startActivity(intent);
+                listClickListener.listItemClicked(user);
             }
         });
 
@@ -75,5 +73,9 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
             this.email = itemView.findViewById(R.id.email);
             this.relativeLayout = itemView.findViewById(R.id.row_layout);
         }
+    }
+
+    public interface ListClickListener {
+        void listItemClicked(User user);
     }
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detail"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -13,64 +12,12 @@
     android:layout_margin="15dp"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <fragment
+        android:id="@+id/detail_content"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_graph_detail"
+        app:defaultNavHost="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/first_name_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="1dp"
-            android:paddingEnd="1dp"
-            android:text="@string/name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.434"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_photo_view" />
-
-        <TextView
-            android:id="@+id/last_name_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:paddingEnd="10dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="1dp"
-            android:paddingStart="1dp"
-            android:text="@string/name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/first_name_view"
-            app:layout_constraintTop_toBottomOf="@+id/profile_photo_view" />
-
-        <TextView
-            android:id="@+id/email_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/email"
-            android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/first_name_view"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_photo_view"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:src="@drawable/download"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</FrameLayout>
